@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<hdevelop file_version="1.2" halcon_version="22.05.0.0">
+<procedure name="get_bicycle_by_threhold">
+<interface>
+<io>
+<par name="originImg" base_type="iconic" dimension="0"/>
+</io>
+<oo>
+<par name="BicycleImg" base_type="iconic" dimension="0"/>
+</oo>
+</interface>
+<body>
+<l>rgb1_to_gray (originImg, GrayImage)</l>
+<l>threshold (GrayImage, Regions, 9, 138)</l>
+<l>reduce_domain (originImg, Regions, reduceImg)</l>
+<l>invert_image (reduceImg, BicycleImg)</l>
+<c></c>
+<c></c>
+<l>return ()</l>
+</body>
+<docu id="get_bicycle_by_threhold">
+<parameters>
+<parameter id="BicycleImg"/>
+<parameter id="originImg"/>
+</parameters>
+</docu>
+</procedure>
+</hdevelop>

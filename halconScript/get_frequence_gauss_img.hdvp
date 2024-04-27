@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<hdevelop file_version="1.2" halcon_version="22.05.0.0">
+<procedure name="get_frequence_gauss_img">
+<interface>
+<io>
+<par name="originImg" base_type="iconic" dimension="0"/>
+</io>
+<oo>
+<par name="outputImg" base_type="iconic" dimension="0"/>
+</oo>
+<ic>
+<par name="size" base_type="ctrl" dimension="0"/>
+</ic>
+</interface>
+<body>
+<l>get_image_size (originImg, Width, Height)</l>
+<l>rft_generic (originImg, ImageFFT, 'to_freq', 'none', 'complex', Width)</l>
+<l>gen_gauss_filter (ImageGauss, 10, 10, 0, 'n', 'rft', Width, Height)</l>
+<l>convol_fft (ImageFFT, ImageGauss, ImageConvol)</l>
+<l>rft_generic (ImageConvol, outputImg, 'from_freq', 'none', 'byte', Width)</l>
+<c></c>
+<l>return ()</l>
+</body>
+<docu id="get_frequence_gauss_img">
+<parameters>
+<parameter id="originImg"/>
+<parameter id="outputImg"/>
+<parameter id="size"/>
+</parameters>
+</docu>
+</procedure>
+</hdevelop>

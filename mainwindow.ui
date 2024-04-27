@@ -1,0 +1,230 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>MainWindow</class>
+ <widget class="QMainWindow" name="MainWindow">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>800</width>
+    <height>600</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>MainWindow</string>
+  </property>
+  <widget class="QWidget" name="centralwidget">
+   <widget class="QWidget" name="displayWidget" native="true">
+    <property name="geometry">
+     <rect>
+      <x>160</x>
+      <y>80</y>
+      <width>471</width>
+      <height>271</height>
+     </rect>
+    </property>
+    <property name="autoFillBackground">
+     <bool>false</bool>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-color: rgb(170, 255, 255);</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="showImg">
+    <property name="geometry">
+     <rect>
+      <x>620</x>
+      <y>400</y>
+      <width>99</width>
+      <height>27</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>准备图像处理</string>
+    </property>
+   </widget>
+  </widget>
+  <widget class="QMenuBar" name="menubar">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>800</width>
+     <height>25</height>
+    </rect>
+   </property>
+   <widget class="QMenu" name="menu">
+    <property name="title">
+     <string>滤波</string>
+    </property>
+    <addaction name="actiongau"/>
+    <addaction name="actionmean"/>
+    <addaction name="actionmedian"/>
+    <addaction name="actionfrequenceGaussFilter"/>
+   </widget>
+   <widget class="QMenu" name="menu_2">
+    <property name="title">
+     <string>预处理</string>
+    </property>
+    <addaction name="actiongray"/>
+    <addaction name="actionBinarization"/>
+   </widget>
+   <widget class="QMenu" name="menu_3">
+    <property name="title">
+     <string>边缘检测</string>
+    </property>
+    <addaction name="actionSobel"/>
+    <addaction name="actionCanny"/>
+    <addaction name="actionlaplace"/>
+   </widget>
+   <widget class="QMenu" name="menu_4">
+    <property name="title">
+     <string>阈值分割</string>
+    </property>
+    <addaction name="separator"/>
+    <addaction name="actionRGBThred"/>
+    <addaction name="actionHSVThred"/>
+    <addaction name="actionadapter"/>
+    <addaction name="actionlocal"/>
+   </widget>
+   <widget class="QMenu" name="menu_5">
+    <property name="title">
+     <string>形态学变换</string>
+    </property>
+    <addaction name="actiondilate"/>
+    <addaction name="actioncorrosion"/>
+    <addaction name="actiontopHat"/>
+    <addaction name="actionblackHat"/>
+   </widget>
+   <widget class="QMenu" name="menu_6">
+    <property name="title">
+     <string>图像增强</string>
+    </property>
+    <addaction name="actionequlization"/>
+    <addaction name="actionhigh_filter"/>
+   </widget>
+   <widget class="QMenu" name="menu_7">
+    <property name="title">
+     <string>图像变换</string>
+    </property>
+   </widget>
+   <widget class="QMenu" name="menu_8">
+    <property name="title">
+     <string>额外福利</string>
+    </property>
+    <addaction name="actiondashBoard"/>
+   </widget>
+   <addaction name="menu_2"/>
+   <addaction name="menu"/>
+   <addaction name="menu_3"/>
+   <addaction name="menu_4"/>
+   <addaction name="menu_5"/>
+   <addaction name="menu_6"/>
+   <addaction name="menu_7"/>
+   <addaction name="menu_8"/>
+  </widget>
+  <widget class="QStatusBar" name="statusbar"/>
+  <action name="actiongau">
+   <property name="text">
+    <string>高斯滤波</string>
+   </property>
+  </action>
+  <action name="actionmean">
+   <property name="text">
+    <string>均值滤波</string>
+   </property>
+  </action>
+  <action name="actionmedian">
+   <property name="text">
+    <string>中值滤波</string>
+   </property>
+  </action>
+  <action name="actiongray">
+   <property name="text">
+    <string>灰度图</string>
+   </property>
+  </action>
+  <action name="actionBinarization">
+   <property name="text">
+    <string>二值化</string>
+   </property>
+  </action>
+  <action name="actionSobel">
+   <property name="text">
+    <string>Sobel</string>
+   </property>
+  </action>
+  <action name="actionRGBThred">
+   <property name="text">
+    <string>RGB</string>
+   </property>
+  </action>
+  <action name="actionHSVThred">
+   <property name="text">
+    <string>HSV</string>
+   </property>
+  </action>
+  <action name="actionadapter">
+   <property name="text">
+    <string>自适应阈值</string>
+   </property>
+  </action>
+  <action name="actionlocal">
+   <property name="text">
+    <string>局部阈值</string>
+   </property>
+  </action>
+  <action name="actionCanny">
+   <property name="text">
+    <string>Canny</string>
+   </property>
+  </action>
+  <action name="actiondilate">
+   <property name="text">
+    <string>膨胀</string>
+   </property>
+  </action>
+  <action name="actioncorrosion">
+   <property name="text">
+    <string>腐蚀</string>
+   </property>
+  </action>
+  <action name="actiontopHat">
+   <property name="text">
+    <string>顶帽</string>
+   </property>
+  </action>
+  <action name="actionblackHat">
+   <property name="text">
+    <string>黑帽</string>
+   </property>
+  </action>
+  <action name="actionequlization">
+   <property name="text">
+    <string>直方图均衡化</string>
+   </property>
+  </action>
+  <action name="actionhigh_filter">
+   <property name="text">
+    <string>高通滤波</string>
+   </property>
+  </action>
+  <action name="actionlaplace">
+   <property name="text">
+    <string>拉普拉斯</string>
+   </property>
+  </action>
+  <action name="actionfrequenceGaussFilter">
+   <property name="text">
+    <string>频率域高斯滤波</string>
+   </property>
+  </action>
+  <action name="actiondashBoard">
+   <property name="text">
+    <string>仪表盘</string>
+   </property>
+  </action>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>
