@@ -17,6 +17,7 @@ SOURCES += \
     imgProcess/IImgProcess.cpp \
     imgProcess/halconbinaryprocessor.cpp \
     imgProcess/halconcannydetectprocessor.cpp \
+    imgProcess/halcondynthresprocessor.cpp \
     imgProcess/halcongaussprocesser.cpp \
     imgProcess/halcongrayprocessor.cpp \
     imgProcess/halcongrequencegaussprocessor.cpp \
@@ -41,6 +42,7 @@ HEADERS += \
     imgProcess/IImgProcess.h \
     imgProcess/halconbinaryprocessor.h \
     imgProcess/halconcannydetectprocessor.h \
+    imgProcess/halcondynthresprocessor.h \
     imgProcess/halcongaussprocesser.h \
     imgProcess/halcongrayprocessor.h \
     imgProcess/halcongrequencegaussprocessor.h \

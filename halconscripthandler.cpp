@@ -4,6 +4,7 @@
 
 #include <imgProcess/halconbinaryprocessor.h>
 #include <imgProcess/halconcannydetectprocessor.h>
+#include <imgProcess/halcondynthresprocessor.h>
 #include <imgProcess/halcongaussprocesser.h>
 #include <imgProcess/halcongrequencegaussprocessor.h>
 #include <imgProcess/halconhistogramprocessor.h>
@@ -33,7 +34,7 @@ void HalconScriptHandler::startProcess()
     connectProcessorCallback(halconProcesser);
     halconProcesser->executeProcess();
 
-//    delete(halconProcesser);
+    //    delete(halconProcesser);
 }
 
 void HalconScriptHandler::init()
@@ -56,7 +57,7 @@ void HalconScriptHandler::init()
     connect(ui->actiongray,&QAction::triggered,this,[=]() mutable{
         qDebug()<< "actiongray";
 
-//        QString methodName = "get_gray_picture";
+        //        QString methodName = "get_gray_picture";
         //executeHalconProcess(methodName);
         if(!isImgLoaded){
             qDebug()<< "load image first!";
@@ -113,9 +114,9 @@ void HalconScriptHandler::init()
 
         connectProcessorCallback(halconProcesser);
 
-//        QObject::connect(halconProcesser, &HalconSobelProcessor::imageProcessDone,
-//                         this, &HalconScriptHandler::onImgProcessed);
-//        halconSobelProcessor->executeProcess();
+        //        QObject::connect(halconProcesser, &HalconSobelProcessor::imageProcessDone,
+        //                         this, &HalconScriptHandler::onImgProcessed);
+        //        halconSobelProcessor->executeProcess();
         startProcess();
 
     });
@@ -151,6 +152,7 @@ void HalconScriptHandler::init()
 
     });
 
+
     connect(ui->actionequlization,&QAction::triggered,this,[=](){
         qDebug()<< "actionequlization";
 
@@ -185,6 +187,12 @@ void HalconScriptHandler::init()
 
     connect(ui->actionlocal,&QAction::triggered,this,[=](){
         qDebug()<< "actionlocal";
+
+
+        halconProcesser = new HalconDynThresProcessor(currentImg);
+        qDebug()<< "connect HalconDynThresProcessor";
+        connectProcessorCallback(halconProcesser);
+        startProcess();
     });
 
     connect(ui->actiongau,&QAction::triggered,this,[=](){
@@ -237,12 +245,12 @@ void HalconScriptHandler::ShowImgByHalcon(const QString &ImgPath)
 
         HalconCpp::HObject hImg;
         HalconCpp::HTuple filePathTuiple;
-//        utils.convertQStringToHTuple(*fileImg,filePathTuiple);
+        //        utils.convertQStringToHTuple(*fileImg,filePathTuiple);
         utils.convertQStringToHTuple(ImgPath,filePathTuiple);
 
         ///这里有坑！！要先ReadImage再OpenWindow图片尺寸才能正常
         HalconCpp::ReadImage(&hImg,filePathTuiple);
-//        HalconCpp::ReadImage(&hImg,"../image/haha.jpg");
+        //        HalconCpp::ReadImage(&hImg,"../image/haha.jpg");
 
         Hlong winID = ui->displayWidget->winId();
         HalconCpp::OpenWindow(0,0,ui->displayWidget->width(),ui->displayWidget->height()
@@ -253,61 +261,61 @@ void HalconScriptHandler::ShowImgByHalcon(const QString &ImgPath)
 
         isImgLoaded = true;
 
-//        HalconCpp::HObject hImgResized;
-//        HalconCpp::ZoomImageSize(hImg, &hImgResized, ui->displayWidget->width()
-//                                 ,ui->displayWidget->height(),"constant");
-//        currentImg = hImgResized;
+        //        HalconCpp::HObject hImgResized;
+        //        HalconCpp::ZoomImageSize(hImg, &hImgResized, ui->displayWidget->width()
+        //                                 ,ui->displayWidget->height(),"constant");
+        //        currentImg = hImgResized;
 
-//        HalconCpp::DispObj(hImg,hHandle);
+        //        HalconCpp::DispObj(hImg,hHandle);
 
-//        HalconCpp::DispObj(hImgResized,hHandle);
+        //        HalconCpp::DispObj(hImgResized,hHandle);
 
-//        HalconCpp::HTuple width,height;
-//        HalconCpp::GetImageSize(hImg, &width, &height);
-//        // 获取宽度和高度的整数值
-//        int widthValue = width[0].I();
-//        int heightValue = height[0].I();
-//        qDebug()<< "hImg width:" << widthValue;
-//        qDebug()<< "hImg height:" << heightValue;
+        //        HalconCpp::HTuple width,height;
+        //        HalconCpp::GetImageSize(hImg, &width, &height);
+        //        // 获取宽度和高度的整数值
+        //        int widthValue = width[0].I();
+        //        int heightValue = height[0].I();
+        //        qDebug()<< "hImg width:" << widthValue;
+        //        qDebug()<< "hImg height:" << heightValue;
 
-//        HalconCpp::GetImageSize(currentImg, &width, &height);
-//        // 获取宽度和高度的整数值
-//        int widthValueResized = width[0].I();
-//        int heightValueResized = height[0].I();
+        //        HalconCpp::GetImageSize(currentImg, &width, &height);
+        //        // 获取宽度和高度的整数值
+        //        int widthValueResized = width[0].I();
+        //        int heightValueResized = height[0].I();
 
-//         qDebug()<< "currentImg width:" << widthValueResized;
-//         qDebug()<< "currentImg height:" << heightValueResized;
+        //         qDebug()<< "currentImg width:" << widthValueResized;
+        //         qDebug()<< "currentImg height:" << heightValueResized;
 
-//         qDebug()<< "displayWidget width:" << ui->displayWidget->width();
-//         qDebug()<< "displayWidget height:" << ui->displayWidget->height();
+        //         qDebug()<< "displayWidget width:" << ui->displayWidget->width();
+        //         qDebug()<< "displayWidget height:" << ui->displayWidget->height();
 
-//        qDebug()<< "after ReadImage";
+        //        qDebug()<< "after ReadImage";
 
-//        QString methodName = "get_bicycle";
-
-
-
-         // 调整图像尺寸
-//        proCall->SetInputIconicParamObject("originImg",hImgResized);
+        //        QString methodName = "get_bicycle";
 
 
 
-//        HalconCpp::DispObj(hImg,hHandle);
+        // 调整图像尺寸
+        //        proCall->SetInputIconicParamObject("originImg",hImgResized);
 
-//        HalconCpp::GetImageSize(currentImg, &width, &height);
-//        // 获取宽度和高度的整数值
-//        int widthOutputImg = width[0].I();
-//        int heightOutputImg = height[0].I();
-//        qDebug()<< "widthOutputImg width:" << widthOutputImg;
-//        qDebug()<< "heightOutputImg height:" << heightOutputImg;
 
-//        HalconCpp::DispObj(hImg,hHandle);
+
+        //        HalconCpp::DispObj(hImg,hHandle);
+
+        //        HalconCpp::GetImageSize(currentImg, &width, &height);
+        //        // 获取宽度和高度的整数值
+        //        int widthOutputImg = width[0].I();
+        //        int heightOutputImg = height[0].I();
+        //        qDebug()<< "widthOutputImg width:" << widthOutputImg;
+        //        qDebug()<< "heightOutputImg height:" << heightOutputImg;
+
+        //        HalconCpp::DispObj(hImg,hHandle);
 
     }catch(HalconCpp::HException &Exception)
     {
-         qDebug() << "Exception.ProcNam:" << Exception.ProcName().Text(); //实际的HALCON算子的名字
-         qDebug()<< "Exception.ErrorMessage:" << Exception.ErrorMessage().Text(); //错误信息
-         qDebug()<< "Exception.ErrorCode:" << Exception.ErrorCode(); //错误码
+        qDebug() << "Exception.ProcNam:" << Exception.ProcName().Text(); //实际的HALCON算子的名字
+        qDebug()<< "Exception.ErrorMessage:" << Exception.ErrorMessage().Text(); //错误信息
+        qDebug()<< "Exception.ErrorCode:" << Exception.ErrorCode(); //错误码
     }
 }
 
@@ -321,14 +329,14 @@ void HalconScriptHandler::connectProcessorCallback(IImgProcess *halconProcesser)
 }
 
 void HalconScriptHandler::onImgProcessed(const HalconCpp::HObject &processImg,boolean needOpenWindow){
-   qDebug()<< "onImgProcessed needOpenWindow:" << needOpenWindow;
-   Hlong winID = ui->displayWidget->winId();
-   HalconCpp::CloseWindow(hHandle);
-//   if(needOpenWindow){
-       HalconCpp::OpenWindow(0,0,ui->displayWidget->width(),ui->displayWidget->height()
-                             ,winID,"visible","black",&hHandle);
-//   }
+    qDebug()<< "onImgProcessed needOpenWindow:" << needOpenWindow;
+    Hlong winID = ui->displayWidget->winId();
+    HalconCpp::CloseWindow(hHandle);
+    //   if(needOpenWindow){
+    HalconCpp::OpenWindow(0,0,ui->displayWidget->width(),ui->displayWidget->height()
+                          ,winID,"visible","black",&hHandle);
+    //   }
 
-   HalconCpp::DispObj(processImg,hHandle);
+    HalconCpp::DispObj(processImg,hHandle);
 }
 
