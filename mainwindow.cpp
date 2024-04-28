@@ -2,6 +2,7 @@
 #include "halconscripthandler.h"
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
+#include <QMouseEvent>
 #include <QObject>
 #include <imgProcess/halcongrayprocessor.h>
 
@@ -35,6 +36,10 @@ void MainWindow::on_showImg_clicked()
     qDebug()<< "selector->show()";
 
 }
+
+//void MainWindow::mousePressEvent(QMouseEvent *event) {
+//    event->ignore(); // 阻止窗口处理鼠标事件
+//}
 
 
 

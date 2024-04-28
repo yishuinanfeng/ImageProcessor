@@ -31,10 +31,24 @@ public:
 
     void drawPointer(QPainter& painter,int radius);
 
+    void mousePressEvent(QMouseEvent *event) override;
+
+    void mouseMoveEvent(QMouseEvent *event) override;
+
+    void mouseReleaseEvent(QMouseEvent *event) override;
+
 signals:
 
 private:
     int grdientRadiusDiff = 40;
+
+    bool isDragging;
+
+    QPoint dragPosition;
+
+    int radius = 0;
+
+    int angle = -120;
 
 };
 

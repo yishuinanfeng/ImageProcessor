@@ -31,6 +31,7 @@ public:
 
 
     
+//    void mousePressEvent(QMouseEvent *event) override;
 private slots:
 
     void on_showImg_clicked();
